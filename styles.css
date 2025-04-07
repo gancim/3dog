@@ -1,0 +1,310 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    perspective: 1000px;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 1rem;
+    transform-style: preserve-3d;
+}
+
+h1 {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #333;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.dog-container {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    transform-style: preserve-3d;
+}
+
+.dog {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.dog-body {
+    position: absolute;
+    width: 90px;
+    height: 60px;
+    background-color: #E6A23C;
+    border-radius: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateZ(0);
+    transition: transform 0.2s ease;
+    box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.2);
+    transform-style: preserve-3d;
+}
+
+.dog-head {
+    position: absolute;
+    width: 80px;
+    height: 70px;
+    background-color: #E6A23C;
+    border-radius: 40px;
+    top: -40px;
+    left: 5px;
+    transform: translateZ(10px);
+    box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2);
+    transform-style: preserve-3d;
+}
+
+.dog-face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.dog-nose {
+    position: absolute;
+    width: 12px;
+    height: 8px;
+    background-color: #2C2C2C;
+    border-radius: 6px;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%) translateZ(15px);
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dog-mouth {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    border: 2px solid #2C2C2C;
+    border-radius: 0 0 10px 10px;
+    border-top: none;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%) translateZ(12px);
+}
+
+.dog-eyes {
+    position: absolute;
+    width: 100%;
+    top: 20px;
+    transform-style: preserve-3d;
+}
+
+.dog-eye {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #2C2C2C;
+    border-radius: 50%;
+    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.3);
+    transform-style: preserve-3d;
+}
+
+.dog-eye.left {
+    left: 20px;
+    transform: translateZ(15px);
+}
+
+.dog-eye.right {
+    right: 20px;
+    transform: translateZ(15px);
+}
+
+.dog-ear {
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    background-color: #E6A23C;
+    border-radius: 10px;
+    top: -5px;
+    transform-origin: bottom;
+    transform-style: preserve-3d;
+}
+
+.dog-ear.left {
+    left: 5px;
+    transform: rotate(-10deg) translateZ(5px);
+}
+
+.dog-ear.right {
+    right: 5px;
+    transform: rotate(10deg) translateZ(5px);
+}
+
+.dog-cheeks {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.dog-cheek {
+    position: absolute;
+    width: 15px;
+    height: 10px;
+    background-color: #F5A623;
+    border-radius: 50%;
+    bottom: 15px;
+    transform-style: preserve-3d;
+}
+
+.dog-cheek.left {
+    left: 15px;
+    transform: translateZ(10px);
+}
+
+.dog-cheek.right {
+    right: 15px;
+    transform: translateZ(10px);
+}
+
+.dog-tail {
+    position: absolute;
+    width: 15px;
+    height: 35px;
+    background-color: #E6A23C;
+    border-radius: 7px;
+    right: -5px;
+    top: 5px;
+    transform-origin: top;
+    animation: wag 1s infinite;
+    box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2);
+    transform: rotate(180deg) translateZ(0);
+    transform-style: preserve-3d;
+}
+
+.dog-leg {
+    position: absolute;
+    width: 12px;
+    height: 30px;
+    background-color: #E6A23C;
+    border-radius: 6px;
+    bottom: -12px;
+    box-shadow: inset -3px -3px 6px rgba(0, 0, 0, 0.2);
+    transform-style: preserve-3d;
+}
+
+.dog-leg.front-left {
+    left: 15px;
+    transform: translateZ(-5px);
+}
+
+.dog-leg.front-right {
+    left: 35px;
+    transform: translateZ(-5px);
+}
+
+.dog-leg.back-left {
+    left: 15px;
+    height: 25px;
+    transform: translateZ(-5px);
+}
+
+.dog-leg.back-right {
+    left: 35px;
+    height: 25px;
+    transform: translateZ(-5px);
+}
+
+@keyframes wag {
+    0%, 100% { transform: rotate(180deg) translateZ(0); }
+    50% { transform: rotate(210deg) translateZ(0); }
+}
+
+.controls {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.status {
+    position: fixed;
+    top: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    color: #333;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.poop, .pee {
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.poop {
+    width: 20px;
+    height: 20px;
+    background-color: #8B4513;
+    border-radius: 50%;
+}
+
+.pee {
+    width: 5px;
+    height: 30px;
+    background-color: yellow;
+    transform: rotate(-45deg);
+}
+
+.show {
+    opacity: 1;
+}
+
+.petting {
+    animation: pet 0.5s ease-in-out;
+}
+
+@keyframes pet {
+    0%, 100% { transform: translate(-50%, -50%) scale(1) translateZ(0); }
+    50% { transform: translate(-50%, -50%) scale(1.1) translateZ(10px); }
+} 
