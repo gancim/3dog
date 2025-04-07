@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: './',  // Changed to relative path for the new structure
+  base: '/3dog/',  // Changed to match GitHub repository name
   server: {
     port: 3000,
     open: true
   },
   build: {
-    outDir: '../dist',  // Output to root directory's dist
+    outDir: 'dist',  // Changed back to local dist for gh-pages
     assetsDir: 'assets',
     sourcemap: true
   },
